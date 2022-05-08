@@ -50,9 +50,9 @@
 
       .chartDiv {
         padding: 30px;
-        background-color: white;
         text-align: center;
         position: absolute;
+        transition: 0.25s;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -78,9 +78,8 @@
       }
 
       .visible {
-        /* display: block !important; */
+        transition: 0.25s;
         opacity: 1 !important;
-        transform: scale(1) !important;
       }
     </style>
   </head>
@@ -986,70 +985,70 @@
                 fill="black"
               />
             </g>
-            <g id="retirement">
+            <g id="retirement" class="colored">
               <path
                 id="Vector_159"
                 d="M632.78 212.12L703.32 115C628.32 60.55 549.47 34.92 456.83 34.92V154.51C520.102 154.589 581.714 174.762 632.78 212.12V212.12Z"
                 fill="#838E6E"
               />
             </g>
-            <g id="estate">
+            <g id="estate" class="colored">
               <path
                 id="Vector_160"
                 d="M741.39 361.83L855.68 324.69C827.05 236.58 778.28 169.46 703.33 115L632.79 212.11C683.828 249.361 721.828 301.749 741.39 361.83V361.83Z"
                 fill="#B5BBA8"
               />
             </g>
-            <g id="investment">
+            <g id="investment" class="colored">
               <path
                 id="Vector_161"
                 d="M855.68 324.71L741.39 361.84C760.837 421.967 760.879 486.688 741.51 546.84L855.68 583.93C884.3 495.78 884.3 412.82 855.68 324.71Z"
                 fill="#604F1F"
               />
             </g>
-            <g id="education">
+            <g id="education" class="colored">
               <path
                 id="Vector_162"
                 d="M633 696.74L703.36 793.58C778.28 739.12 827.05 672 855.68 583.89L741.51 546.8C722.009 606.948 684.039 659.415 633 696.74V696.74Z"
                 fill="#80724C"
               />
             </g>
-            <g id="insurance">
+            <g id="insurance" class="colored">
               <path
                 id="Vector_163"
                 d="M456.83 754.49V873.67C549.47 873.67 628.33 848.03 703.33 793.58L633 696.74C581.892 734.196 520.194 754.421 456.83 754.49V754.49Z"
                 fill="#DFC479"
               />
             </g>
-            <g id="charitable">
+            <g id="charitable" class="colored">
               <path
                 id="Vector_164"
                 d="M456 754.5C392.816 754.587 331.233 734.63 280.11 697.5L210.33 793.55C285.28 848 364.18 873.64 456.83 873.64V754.49L456 754.5Z"
                 fill="#ECDCAF"
               />
             </g>
-            <g id="tax">
+            <g id="tax" class="colored">
               <path
                 id="Vector_165"
                 d="M170.65 547.29L58 583.89C86.61 672 135.38 739.12 210.33 793.58L280.11 697.53C228.668 660.271 190.35 607.676 170.65 547.29V547.29Z"
                 fill="#7D5A35"
               />
             </g>
-            <g id="cash">
+            <g id="cash" class="colored">
               <path
                 id="Vector_166"
                 d="M156 454.5C155.977 422.865 160.962 391.426 170.77 361.35L58 324.71C29.37 412.82 29.37 495.78 58 583.89L170.65 547.29C160.917 517.323 155.973 486.008 156 454.5V454.5Z"
                 fill="#A77847"
               />
             </g>
-            <g id="debt">
+            <g id="debt" class="colored">
               <path
                 id="Vector_167"
                 d="M280.31 211.32L210.31 115C135.38 169.48 86.61 236.6 58 324.71L170.77 361.35C190.526 301.029 228.871 248.51 280.31 211.32V211.32Z"
                 fill="#B9936C"
               />
             </g>
-            <g id="business">
+            <g id="business" class="colored">
               <path
                 id="Vector_168"
                 d="M456 154.5H456.83V34.91C364.18 34.91 285.28 60.54 210.33 115L280.33 211.32C331.414 174.298 392.911 154.407 456 154.5Z"
@@ -1065,5 +1064,25 @@
         </svg>
       </div>
     </div>
+    <script>
+      var dots = document.getElementsByClassName("colored");
+      var activeId = "";
+
+      var hoverInListener = function () {
+        document.getElementsByClassName(this.id)[0].classList.add("visible");
+      };
+
+      var hoverOutListener = function () {
+        document.getElementsByClassName(this.id)[0].classList.remove("visible");
+      };
+
+      Array.from(dots).forEach(function (element) {
+        element.addEventListener("mouseover", hoverInListener);
+      });
+
+      Array.from(dots).forEach(function (element) {
+        element.addEventListener("mouseout", hoverOutListener);
+      });
+    </script>
   </body>
 </html>
